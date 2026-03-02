@@ -1,0 +1,65 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+
+
+
+
+### Prevents Combat events with bosses from advancing Ante
+# Set G.GAME.combat_event = true in the combat event
+
+
+# Prevent ante switch
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+position = 'at'
+pattern = '''
+G.FUNCS.draw_from_hand_to_discard()
+if G.GAME.blind:get_type() == 'Boss' then
+'''
+payload = '''
+G.FUNCS.draw_from_hand_to_discard()
+if G.GAME.blind:get_type() == 'Boss' and not G.GAME.combat_event then
+'''
+match_indent = true
+
+# Switch G.GAME.combat_event to false after we're done with the battle (upon clicking Cash Out button)
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+position = 'after'
+pattern = 'reset_blinds()'
+payload = 'if G.GAME.combat_event then G.GAME.combat_event = false end'
+match_indent = true
+
+# Prevents Boss reset
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''
+if G.GAME.round_resets.blind_states.Boss == 'Defeated' then
+'''
+position = 'at'
+payload = '''
+if G.GAME.round_resets.blind_states.Boss == 'Defeated' and not G.GAME.combat_event then
+'''
+match_indent = true
+times = 1
+
+# Prevents Generation of new Vouchers
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+position = 'at'
+pattern = '''
+else
+  G.GAME.current_round.voucher = SMODS.get_next_vouchers()
+'''
+payload = '''
+elseif not G.GAME.combat_event then
+  G.GAME.current_round.voucher = SMODS.get_next_vouchers()
+'''
+match_indent = true

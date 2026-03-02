@@ -1,0 +1,53 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+### Adds new state to G.STATES
+
+# Go to map after Cashing out instead of going to the shop
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "G.STATE = G.STATES.SHOP"
+position = "at"
+payload = "G.STATE = G.STATES.ADVENTURE_MAP"
+match_indent = true
+
+# Return to map after Shop instead of Blind select
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "G.STATE = G.STATES.BLIND_SELECT"
+position = "at"
+payload = "G.STATE = G.STATES.ADVENTURE_MAP"
+match_indent = true
+
+# Add map update function
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "if self.STATE == self.STATES.MENU then"
+position = "before"
+payload = "if G.STATE == G.STATES.ADVENTURE_MAP then G:update_adventure_map(0) end"
+match_indent = true
+
+# Hide Cardarea if we're on the map
+[[patches]]
+[patches.pattern]
+target = "cardarea.lua"
+pattern = "(self.config.type == 'deck' and self ~= G.deck) or"
+position = "after"
+payload = "(self.config.type == 'hand' and state == G.STATES.ADVENTURE_MAP) or"
+match_indent = true
+
+
+
+# [[patches]]
+# [patches.pattern]
+# target = "game.lua"
+# pattern = "self.SPEEDFACTOR = self.SPEEDFACTOR + math.max(0, math.abs(G.ACC) - 2)"
+# position = "after"
+# payload = "print(G.PITCH_MOD)"
+# match_indent = true
+

@@ -1,0 +1,14 @@
+{
+  "id": "adventure_map",
+  "name": "Adventure Map",
+  "display_name": "Adventure Map",
+  "author": ["vissa"],
+  "description": "Adds a Map to the game, with many Events!",
+  "prefix": "map",
+  "main_file": "adventure_map.lua",
+  "priority": -10000,
+  "badge_colour": "5a1e1e",
+  "badge_text_colour": "ffffff",
+  "version": "0.1.1",
+  "dependencies": ["Steamodded (>=1.0.0~BETA-0614a)", "TheEncounter", "Lovely"]
+}

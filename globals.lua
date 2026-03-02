@@ -1,0 +1,7 @@
+--- GLOBALS
+
+MAP = {
+    UI = {},
+    UTIL = {}
+}
+
