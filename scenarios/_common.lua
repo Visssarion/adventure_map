@@ -5,8 +5,8 @@ TheEncounter.Choice({
 	},
     loc_vars = function(self, info_queue, event)
         local joker_key = "j_joker"
-        if G.event_joker and G.event_joker.cards and #G.event_joker.cards > 0 then
-            joker_key = G.event_joker.cards[1].config.center.key
+        if G.event_jokers and G.event_jokers.cards and #G.event_jokers.cards > 0 then
+            joker_key = G.event_jokers.cards[1].config.center.key
             print(joker_key)
         elseif event.ability.extra.joker_key then
            joker_key = event.ability.extra.joker_key 
@@ -19,15 +19,15 @@ TheEncounter.Choice({
 		}
 	end,
 	button = function(self, event)
-        if G.event_joker then
-            local card = G.event_joker.cards and G.event_joker.cards[1]
+        if G.event_jokers then
+            local card = G.event_jokers.cards and G.event_jokers.cards[1]
             if card == nil then
                 print("[ch_map_take_joker]: something went wrong")
             else
-                G.event_joker:remove_card(card)
+                G.event_jokers:remove_card(card)
                 card:add_to_deck()
                 G.jokers:emplace(card)
-                if #G.event_joker.cards == 0 then
+                if #G.event_jokers.cards == 0 then
                     event:finish_scenario()
                     return
                 end
@@ -79,7 +79,7 @@ TheEncounter.Step({
 })
 
 MAP.UTIL.card_show_area = function (event, card_key)
-    G.event_joker = CardArea(
+    G.event_jokers = CardArea(
         G.hand.T.x + (G.hand.T.w - 5 * 1.02 * G.CARD_W) / 2,
         G.hand.T.y - 0.5,
         5 * 1.02 * G.CARD_W,
@@ -87,7 +87,7 @@ MAP.UTIL.card_show_area = function (event, card_key)
         { card_limit = 5, type = "title", highlight_limit = 1, negative_info = true } --title_2
     )
     local sizes = TheEncounter.UI.event_panel_sizes(event)
-    G.event_joker:set_alignment({
+    G.event_jokers:set_alignment({
         bond = "Weak",
         major = event.ui.panel,
         type = "tm",
@@ -96,27 +96,27 @@ MAP.UTIL.card_show_area = function (event, card_key)
             x = 0,
         },
     })
-    G.event_joker.children.area_uibox = UIBox({
+    G.event_jokers.children.area_uibox = UIBox({
         definition = {
             n = G.UIT.ROOT,
             config = {
                 colour = { 0, 0, 0, 0.1 },
                 padding = 0.15,
                 r = 0.1,
-                minw = G.event_joker.T.w,
-                minh = G.event_joker.T.h,
+                minw = G.event_jokers.T.w,
+                minh = G.event_jokers.T.h,
             },
             nodes = {},
         },
         config = {
             mid = true,
-            ref_table = G.event_joker,
+            ref_table = G.event_jokers,
             align = "cm",
-            major = G.event_joker,
+            major = G.event_jokers,
         },
     })
 
-    local card = SMODS.add_card({key = card_key, area = G.event_joker})
+    local card = SMODS.add_card({key = card_key, area = G.event_jokers})
     card:juice_up()
 end
 
@@ -125,9 +125,9 @@ MAP.UTIL.remove_card_show_area = function (event)
     event:before_remove_callback(function ()
         -- G.SHOP_SIGN:remove()
         -- G.SHOP_SIGN = nil
-        G.event_joker.children.area_uibox:remove()
-        G.event_joker:remove()
-        G.event_joker = nil
+        G.event_jokers.children.area_uibox:remove()
+        G.event_jokers:remove()
+        G.event_jokers = nil
     end)
 
 end

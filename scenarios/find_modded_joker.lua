@@ -76,7 +76,7 @@ TheEncounter.Step({
 							end
 						end
 					end
-					local key = pseudorandom_element(jokers, 'find_modded_joker')
+					local key = pseudorandom_element(jokers, 'map_find_modded_joker')
 					if key then
 						event.ability.extra.joker_key = key
 						

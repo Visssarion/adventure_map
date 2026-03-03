@@ -30,9 +30,7 @@ TheEncounter.Step({
 			call = {
 				name = { "Call function" },
 			},
-			skip = {
-				name = { "Skip" },
-			},
+
 		},
 	},
 	get_choices = function(self, event)
@@ -44,9 +42,7 @@ TheEncounter.Step({
 					event:finish_scenario()
 				end,
 			},
-			{
-				choice = "skip",
-			},
+			"ch_map_leave"
 		}
 	end,
 	background_colour = function(self, event)
