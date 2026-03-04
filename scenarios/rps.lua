@@ -15,7 +15,7 @@ TheEncounter.Scenario({
 		
 	},
 	starting_step_key = "st_map_rps_start",
-    weight = 10000
+    weight = 5
     -- change to 100000 to make it always spawn 
     -- 5 is the default weight value
 })
@@ -145,7 +145,8 @@ TheEncounter.Step({
 				paper = "win",
 				scissors = "draw"
 			},
-		}
+		},
+		extra = { cost = 3 },
 	}, 
 
 	start = function(self, event, after_load)
@@ -154,11 +155,31 @@ TheEncounter.Step({
 
 	end,
 	get_choices = function(self, event)
+		print("yo")
 		event.ability.extra.state = self.config.win_table[event.ability.extra.choice][event.ability.extra.enemy_choice]
 		if event.ability.extra.state == "draw" then
-			
+			return {
+				{
+					choice = "draw",
+					button = function()
+						ease_dollars(self.config.extra.cost)
+						event:finish_scenario()
+					end,
+				},
+				"ch_map_leave"
+			}
 		elseif event.ability.extra.state == "win" then
-
+			return {
+				{
+					choice = "win",
+					button = function()
+						local tag = pseudorandom_element(SMODS.get_clean_pool("Tag"), 'map_rps_tag')
+						add_tag(Tag(tag))
+						event:finish_scenario()
+					end,
+				},
+				"ch_map_leave"
+			}
 		else
 			return {
 				"ch_map_leave"
@@ -168,6 +189,7 @@ TheEncounter.Step({
 	end,
 
 	loc_vars = function(self, info_queue, event)
+		print("glo")
 		event.ability.extra.state = self.config.win_table[event.ability.extra.choice][event.ability.extra.enemy_choice]
 		return {
 			vars = {
@@ -177,3 +199,6 @@ TheEncounter.Step({
 	end,
 
 })
+
+-- add localization for buttons
+-- add localization for text 
