@@ -54,6 +54,9 @@ G.FUNCS.go_to_shop_button = function(e)
     G.STATE = G.STATES.SHOP
     G.STATE_COMPLETE = false
     MAP.UI.remove_map()
+
+    play_sound("coin7", 1, 0.7)
+	play_sound("generic1")
 end
 
 G.FUNCS.go_to_round_button = function(e)
@@ -96,6 +99,9 @@ G.FUNCS.go_to_event_button = function(e)
     MAP.UI.remove_map()
 
     G.GAME.events_visited_total = G.GAME.events_visited_total + 1
+
+    play_sound("gong", 0.9+math.random()*0.2, 0.6)
+	play_sound("generic1")
 end
 
 
