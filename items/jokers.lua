@@ -97,7 +97,7 @@ SMODS.Joker{
 
 SMODS.Joker{
     key = "travel_guide",
-    config = { extra = { extra_steps = 1 } },
+    config = { extra = { extra_steps = 2 } },
     atlas = 'map_jokers',
     pos = { x = 2, y = 0 },
     rarity = 2,
@@ -112,8 +112,7 @@ SMODS.Joker{
             return
         end
         if context.new_map then
-            --shakecard(card)
-            context.config.steps = context.config.steps + 1
+            context.config.steps = context.config.steps + card.ability.extra.extra_steps
             
             return { 
                 card = card,
@@ -124,7 +123,7 @@ SMODS.Joker{
 
     end,
 
-    loc_vars = function(self, info_queue, card)          --defines variables to use in the UI. you can use #1# for example to show the chips variable
+    loc_vars = function(self, info_queue, card)
         return { vars = {  card.ability.extra.extra_steps }, key = self.key }
     end
 }

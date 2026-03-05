@@ -41,6 +41,10 @@ MAP.MapManager = {
         }
 
         SMODS.calculate_context(context) -- send calculate to modify parameters
+        for index, tag in ipairs(G.GAME.tags) do
+            tag.apply_to_run(tag, context)
+        end
+
 
         local combined_weight = 0.0
         for _key, value in pairs(config.room_weights) do

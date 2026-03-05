@@ -27,7 +27,7 @@ return {
                 name = "Travel Guide",
                 text = {
                     {
-                        "Adds #1# more step to your map.",
+                        "Adds #1# more steps to your map.",
                     }
                 },
             },
@@ -49,6 +49,12 @@ return {
                     "{C:inactive}#2#",
                 },
             },
+        },
+        Tag = {
+            tag_map_bigger_map = {
+                name = "Bigger Map Tag",
+                text = {"Adds #1# more steps to your map"}
+            }
         },
         enc_Step = {
             st_map_rps_play_win = {
