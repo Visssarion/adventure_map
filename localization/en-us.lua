@@ -49,27 +49,32 @@ return {
                     "{C:inactive}#2#",
                 },
             },
+        },
+        enc_Step = {
+            st_map_rps_play_win = {
+                text = {
+                    "\"Damn, you won! You must have cheated!!\"",
+                    "\"Whatever, take your #1# and leave.\""
+                }
+            },
+            st_map_rps_play_lose = {
+                text = {
+                    "\"Easy money, hehe.\""
+                }
+            },
+            st_map_rps_play_draw = {
+                text = {
+                    "\"Draw means a refund.",
+                    "\"But only after I take the fee money, of course.\""
+                }
+            },
         }
     },
     misc = {
 
-            -- do note that when using messages such as: 
-            -- message = localize{type='variable',key='a_xmult',vars={current_xmult}},
-            -- that the key 'a_xmult' will use provided values from vars={} in that order to replace #1#, #2# etc... in the localization file.
-
 
         dictionary = {
-            -- a_chips="+#1#",
-            -- a_chips_minus="-#1#",
-            -- a_hands="+#1# Hands",
-            -- a_handsize="+#1# Hand Size",
-            -- a_handsize_minus="-#1# Hand Size",
-            -- a_mult="+#1# Mult",
-            -- a_mult_minus="-#1# Mult",
-            -- a_remaining="#1# Remaining",
-            -- a_sold_tally="#1#/#2# Sold",
-            -- a_xmult="X#1# Mult",
-            -- a_xmult_minus="-X#1# Mult",
+
             k_more_shops="More Shops!",
             k_customer_bonus="Customer Bonus!",
             k_more_blinds="More Blinds!",

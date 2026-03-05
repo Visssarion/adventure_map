@@ -1,13 +1,5 @@
 - add a reroll boss button?
 - cooler way to see boss description?
-- do something for the double tag
-    - overtake double tag and do calculate_context so it can double the tags from the events
-    - make events with tags
-
-
-
-
-
 
 
 
@@ -31,3 +23,5 @@ event ideas:
 - wooing some fancy clown (you can try to date him, and you will get different jokers based on choice)
 - increase stats of the joker https://github.com/Steamodded/smods/wiki/Calculate-Functions#scaling-values
 - ban a consumeable from appearing ( G.GAME.banned_keys[key] = true )
+
+card destroy?

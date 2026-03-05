@@ -5,7 +5,7 @@ TheEncounter.Scenario({
 	loc_txt = {
 		name = "Rock Paper Scissors",
 		text = {
-			"Description",
+			"Gambling!",
 		},
 	},
 	domains = {
@@ -24,7 +24,8 @@ TheEncounter.Step({
 	key = "rps_start",
 	loc_txt = {
 		text = {
-			"Sample text.",
+			'"Hey kid do you wanna gamble?"',
+			"\"I'll give you a Tag if you win.\""
 		},
 	},
 	start = function(self, event, after_load)
@@ -48,7 +49,7 @@ TheEncounter.Step({
 TheEncounter.Choice({
 	key = "rps_play",
 	loc_txt = {
-		name = { "Play! (Costs #1#$)" },
+		name = { "Play! (Costs {C:money}#1#${})" },
 	},
 	config = { extra = { cost = 3 } },
 
@@ -74,7 +75,11 @@ TheEncounter.Step({
 	key = "rps_select",
 	loc_txt = {
 		text = {
-			"Select what to play:",
+			"Rock,",
+			"Paper,",
+			"Scissors,",
+			"MULT!",
+			"",
 		},
 		choices = {
 			rock = {
@@ -88,7 +93,7 @@ TheEncounter.Step({
 			},
 		},
 	},
-	start = function(self, event, after_load)
+	setup = function(self, event)
 		event.ability.extra.enemy_choice = pseudorandom_element({"rock", "paper", "scissors"}, 'map_rps')
 	end,
 	get_choices = function(self, event)
@@ -122,11 +127,34 @@ TheEncounter.Step({
 TheEncounter.Step({
 	key = "rps_play",
 	loc_txt = {
-		text = {
-			"#1#",
+
+		choices = {
+			draw = {
+				name = { "Draw! Take {C:money}#1#${})" },
+				
+			},
+			win = {
+				name = { "Won! Take #1#" },
+			},
+
+
 		},
 	},
-	
+	setup = function(self, event)
+		event.ability.extra.state = self.config.win_table[event.ability.extra.choice][event.ability.extra.enemy_choice]
+		if event.ability.extra.state == "win" then
+			event.ability.extra.tag = pseudorandom_element(SMODS.get_clean_pool("Tag"), 'map_rps_tag')
+		end
+	end,
+	loc_vars = function(self, info_queue, event)
+		return {
+			vars = {
+				localize({type = "name_text", key = event.ability.extra.tag, set = "Tag"}),
+				event.ability.extra.cost
+			},
+			key = self.key.."_"..event.ability.extra.state
+		}
+	end,
 
 	config = {
 		win_table = { 
@@ -146,24 +174,24 @@ TheEncounter.Step({
 				scissors = "draw"
 			},
 		},
-		extra = { cost = 3 },
+		extra = { cost = 1 },
 	}, 
 
-	start = function(self, event, after_load)
-
-		event.ability.extra.state = self.config.win_table[event.ability.extra.choice][event.ability.extra.enemy_choice]
-
-	end,
 	get_choices = function(self, event)
-		print("yo")
-		event.ability.extra.state = self.config.win_table[event.ability.extra.choice][event.ability.extra.enemy_choice]
 		if event.ability.extra.state == "draw" then
 			return {
 				{
-					choice = "draw",
+					choice = "draw", 
 					button = function()
-						ease_dollars(self.config.extra.cost)
+						ease_dollars(event.ability.extra.cost)
 						event:finish_scenario()
+					end,
+					loc_vars = function(self, info_queue, event)
+						return {
+							vars = {
+								event.ability.extra.cost,
+							},
+						}
 					end,
 				},
 				"ch_map_leave"
@@ -173,9 +201,16 @@ TheEncounter.Step({
 				{
 					choice = "win",
 					button = function()
-						local tag = pseudorandom_element(SMODS.get_clean_pool("Tag"), 'map_rps_tag')
-						add_tag(Tag(tag))
+						
+						add_tag(Tag(event.ability.extra.tag))
 						event:finish_scenario()
+					end,
+					loc_vars = function(self, info_queue, event)
+						return {
+							vars = {
+								localize({type = "name_text", key = event.ability.extra.tag, set = "Tag"}),
+							},
+						}
 					end,
 				},
 				"ch_map_leave"
@@ -188,17 +223,6 @@ TheEncounter.Step({
 		
 	end,
 
-	loc_vars = function(self, info_queue, event)
-		print("glo")
-		event.ability.extra.state = self.config.win_table[event.ability.extra.choice][event.ability.extra.enemy_choice]
-		return {
-			vars = {
-				event.ability.extra.state,
-			},
-		}
-	end,
-
+	
 })
 
--- add localization for buttons
--- add localization for text 
