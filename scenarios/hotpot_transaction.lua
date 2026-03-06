@@ -1,19 +1,3 @@
-TheEncounter.Domain({
-	key = "transaction",
-	loc_txt = {
-		name = "Transaction",
-		text = {
-			"Hot Potato Marketplace",
-		},
-	},
-
-	can_repeat = true,
-
-	reward = 3,
-
-	colour = HEX("26DF81"),
-	background_colour = HEX("14A75D"),
-})
 TheEncounter.Scenario({
 	key = "postlatro",
 	loc_txt = {
@@ -26,7 +10,7 @@ TheEncounter.Scenario({
 		hide_hud = true,
 	},
 	domains = {
-		do_map_transaction = true,
+		do_map_market = true,
 	},
 	can_repeat = true,
 	starting_step_key = "st_map_postlatro_start",

@@ -11,7 +11,7 @@ TheEncounter.Scenario({
 		can_use = false,
 	},
 	can_save = true,
-	domains = { do_enc_occurrence = true },
+	domains = { do_map_game = true },
 	can_repeat = true,
 	starting_step_key = "st_map_bj_in",
 

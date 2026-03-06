@@ -28,7 +28,7 @@ TheEncounter.Scenario({
 		},
 	},
 	domains = {
-		do_enc_occurrence = true,
+		do_map_joker = true,
 	},
 	config = {
 		--hide_image = true,

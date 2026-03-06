@@ -1,9 +1,4 @@
-map_icons = SMODS.Atlas({
-    key = "map_icons",
-    path = "map_icons.png",
-    px = 34,
-    py = 34
-})
+
 
 
 MAP.UI.render_map = function ()
@@ -125,12 +120,31 @@ MAP.UI.construct_map = function ()
             local item = nil
 
             if value == "shop" then
-                item = {n=G.UIT.O, config={object = SMODS.create_sprite(0, 0, 1, 1, map_icons, {x = 0,y = 1}),
+                if column_index ~= current_column then
+                    item = {n=G.UIT.O, config={object = SMODS.create_sprite(0, 0, 1, 1, MAP.UI.ICONS.atlas, MAP.UI.ICONS.pos.shop),
                                 button = "go_to_shop_button", progress = {column = column_index, row = row_index}
                         }}
-            --elseif string.sub(value, 1, 3) == "ev_" then
+                else
+                    item = {n=G.UIT.O, config={object = SMODS.create_sprite(0, 0, 1, 1, "map_icons_shop_animated", {x=0, y=0}),
+                                button = "go_to_shop_button", progress = {column = column_index, row = row_index}
+                        }}
+                end
+
+
+                        
+
+                        
             elseif string.sub(value, 1, 3) == "sc_" then
-                item = {n=G.UIT.O, config={object = SMODS.create_sprite(0, 0, 1, 1, map_icons, {x = 0,y = 0}), --hover = true, shadow = true, juice = true, emboss = 0.5,
+                local scenario = TheEncounter.Scenarios[value]
+                local domain = TheEncounter.Domains[MAP.MapManager.find_domain(scenario)]
+                local atlas = ((scenario.atlas ~= "enc_Scenario" and scenario.atlas)
+                            or domain.atlas or UI.MAP.ICONS.atlas
+                        )
+                local pos = scenario.pos or domain.pos or UI.MAP.ICONS.default
+
+                -- print({scenario = value, domain = domain.key, atlas = atlas, pos = pos})
+
+                item = {n=G.UIT.O, config={object = SMODS.create_sprite(0, 0, 1, 1, atlas, pos), --hover = true, shadow = true, juice = true, emboss = 0.5,
                                 button = "go_to_event_button", event_data={key=value}, progress = {column = column_index, row = row_index}
                         }}
             elseif string.sub(value, 1, 6) == "blind_" then

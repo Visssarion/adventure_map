@@ -9,15 +9,13 @@ TheEncounter.Scenario({
 		},
 	},
 	domains = {
-		do_enc_occurrence = true,
+		do_map_game = true,
 	},
 	config = {
 		
 	},
 	starting_step_key = "st_map_rps_start",
-    weight = 5
-    -- change to 100000 to make it always spawn 
-    -- 5 is the default weight value
+    weight = 5,
 })
 
 TheEncounter.Step({

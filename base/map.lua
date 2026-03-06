@@ -1,9 +1,46 @@
 --G.GAME.current_map
 --G.GAME.current_map_progress
 
-MAP.MapManager = {
-    
+SMODS.Atlas({
+    key = "map_icons",
+    path = "map_icons.png",
+    px = 34,
+    py = 34
+})
 
+SMODS.Atlas({
+    atlas_table = 'ANIMATION_ATLAS',
+    frames = 4,
+    key = "map_icons_shop_animated",
+    path = "map_icons_shop_animated.png",
+    px = 34,
+    py = 34
+})
+
+MAP.UI.ICONS = {
+    atlas = "map_icons",
+    pos = {
+        default = {x=0, y=0},
+        unknown = {x=0, y=0},
+        game = {x=1, y=0},
+        enemy = {x=2, y=0},
+        shop = {x=0, y=1},
+        market = {x=1, y=1},
+        gift = {x=2, y=1},
+        coin = {x=3, y=1},
+        golden = {x=0, y=2},
+        joker = {x=1, y=2},
+        space = {x=2, y=2},
+        card = {x=3, y=2},
+        crystal = {x=0, y=3},
+        hieroglyph = {x=1, y=3},
+        
+    }
+
+}
+
+
+MAP.MapManager = {
 
     generate_new_map = function ()
         print("[ADVENTURE_MAP] Map Generating")
@@ -94,4 +131,18 @@ MAP.MapManager = {
         return map
     end,
 
+    ---comment
+    ---@param scenario TheEncounter.Scenario
+    ---@return string
+    find_domain = function (scenario)
+        if scenario.domains == nil then
+            return "do_enc_occurrence"
+        end
+        for key, value in pairs(scenario.domains) do
+            if value then
+                return key
+            end
+        end
+        return "do_enc_occurrence"
+    end
 }

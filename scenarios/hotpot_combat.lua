@@ -821,6 +821,9 @@ TheEncounter.Domain({
 		},
 	},
 
+	atlas = "map_icons",
+	pos = MAP.UI.ICONS.pos.enemy,
+
 	can_repeat = true,
 
 	reward = 2,
@@ -836,6 +839,9 @@ TheEncounter.Domain({
 			"Face the difficult challenge",
 		},
 	},
+
+	atlas = "map_icons",
+	pos = MAP.UI.ICONS.pos.enemy,
 
 	can_repeat = true,
 
@@ -917,3 +923,4 @@ TheEncounter.Choice({
 		end)
 	end,
 })
+
