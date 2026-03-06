@@ -69,6 +69,10 @@ TheEncounter.Scenario({
 			particles = { G.C.RED, G.C.ORANGE, G.C.CHIPS },
 		})
 	end,
+
+	map_credits = {
+		code = { "fey <3" }
+	}
 })
 
 TheEncounter.Step({

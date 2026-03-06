@@ -1,117 +1,117 @@
-TheEncounter.Step({
-	key = "empty",
-	loc_txt = {
-		text = {
-			"Empty step.",
-		},
-	},
-	get_choices = function(self, event)
-		return {
-			"ch_map_leave"
-		}
-	end,
-})
+-- TheEncounter.Step({
+-- 	key = "empty",
+-- 	loc_txt = {
+-- 		text = {
+-- 			"Empty step.",
+-- 		},
+-- 	},
+-- 	get_choices = function(self, event)
+-- 		return {
+-- 			"ch_map_leave"
+-- 		}
+-- 	end,
+-- })
 
-TheEncounter.Scenario({
-	key = "gift_debug",
-	loc_txt = {
-		name = "Gift Debug",
-		text = {
-			"Description",
-		},
-	},
-	domains = {
-		do_map_gift = true,
-	},
-	config = {
-		hide_image = true,
-	},
-	starting_step_key = "st_map_empty",
-})
+-- TheEncounter.Scenario({
+-- 	key = "gift_debug",
+-- 	loc_txt = {
+-- 		name = "Gift Debug",
+-- 		text = {
+-- 			"Description",
+-- 		},
+-- 	},
+-- 	domains = {
+-- 		do_map_gift = true,
+-- 	},
+-- 	config = {
+-- 		hide_image = true,
+-- 	},
+-- 	starting_step_key = "st_map_empty",
+-- })
 
-TheEncounter.Scenario({
-	key = "golden_debug",
-	loc_txt = {
-		name = "Golden Debug",
-		text = {
-			"Description",
-		},
-	},
-	domains = {
-		do_map_golden = true,
-	},
-	config = {
-		hide_image = true,
-	},
-	starting_step_key = "st_map_empty",
-})
+-- TheEncounter.Scenario({
+-- 	key = "golden_debug",
+-- 	loc_txt = {
+-- 		name = "Golden Debug",
+-- 		text = {
+-- 			"Description",
+-- 		},
+-- 	},
+-- 	domains = {
+-- 		do_map_golden = true,
+-- 	},
+-- 	config = {
+-- 		hide_image = true,
+-- 	},
+-- 	starting_step_key = "st_map_empty",
+-- })
 
-TheEncounter.Scenario({
-	key = "space_debug",
-	loc_txt = {
-		name = "Space Debug",
-		text = {
-			"Description",
-		},
-	},
-	domains = {
-		do_map_space = true,
-	},
-	config = {
-		hide_image = true,
-	},
-	starting_step_key = "st_map_empty",
-})
+-- TheEncounter.Scenario({
+-- 	key = "space_debug",
+-- 	loc_txt = {
+-- 		name = "Space Debug",
+-- 		text = {
+-- 			"Description",
+-- 		},
+-- 	},
+-- 	domains = {
+-- 		do_map_space = true,
+-- 	},
+-- 	config = {
+-- 		hide_image = true,
+-- 	},
+-- 	starting_step_key = "st_map_empty",
+-- })
 
-TheEncounter.Scenario({
-	key = "card_debug",
-	loc_txt = {
-		name = "Card Debug",
-		text = {
-			"Description",
-		},
-	},
-	domains = {
-		do_map_card = true,
-	},
-	config = {
-		hide_image = true,
-	},
-	starting_step_key = "st_map_empty",
-})
+-- TheEncounter.Scenario({
+-- 	key = "card_debug",
+-- 	loc_txt = {
+-- 		name = "Card Debug",
+-- 		text = {
+-- 			"Description",
+-- 		},
+-- 	},
+-- 	domains = {
+-- 		do_map_card = true,
+-- 	},
+-- 	config = {
+-- 		hide_image = true,
+-- 	},
+-- 	starting_step_key = "st_map_empty",
+-- })
 
-TheEncounter.Scenario({
-	key = "crystal_debug",
-	loc_txt = {
-		name = "Crystal Debug",
-		text = {
-			"Description",
-		},
-	},
-	domains = {
-		do_map_crystal = true,
-	},
-	config = {
-		hide_image = true,
-	},
-	starting_step_key = "st_map_empty",
-})
+-- TheEncounter.Scenario({
+-- 	key = "crystal_debug",
+-- 	loc_txt = {
+-- 		name = "Crystal Debug",
+-- 		text = {
+-- 			"Description",
+-- 		},
+-- 	},
+-- 	domains = {
+-- 		do_map_crystal = true,
+-- 	},
+-- 	config = {
+-- 		hide_image = true,
+-- 	},
+-- 	starting_step_key = "st_map_empty",
+-- })
 
 
-TheEncounter.Scenario({
-	key = "mystery_debug",
-	loc_txt = {
-		name = "Mystery Debug",
-		text = {
-			"Description",
-		},
-	},
-	domains = {
-		do_map_mystery = true,
-	},
-	config = {
-		hide_image = true,
-	},
-	starting_step_key = "st_map_empty",
-})
+-- TheEncounter.Scenario({
+-- 	key = "mystery_debug",
+-- 	loc_txt = {
+-- 		name = "Mystery Debug",
+-- 		text = {
+-- 			"Description",
+-- 		},
+-- 	},
+-- 	domains = {
+-- 		do_map_mystery = true,
+-- 	},
+-- 	config = {
+-- 		hide_image = true,
+-- 	},
+-- 	starting_step_key = "st_map_empty",
+-- })
 

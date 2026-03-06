@@ -29,7 +29,11 @@ SMODS.Tag {
                 tag.config.extra.extra_steps
             }
         }
-    end
+    end,
+
+    map_credits = {
+        made = "vissa",
+    },
 }
 
 

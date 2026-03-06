@@ -14,6 +14,10 @@ TheEncounter.Scenario({
 	},
 	can_repeat = true,
 	starting_step_key = "st_map_postlatro_start",
+
+	map_credits = {
+		code = { "N'" },
+	},
 })
 TheEncounter.Step({
 	key = "postlatro_start",

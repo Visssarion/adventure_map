@@ -39,7 +39,9 @@ TheEncounter.Scenario({
 		weight = math.min(math.max(weight, 5), 15)
 		return self.weight
 	end,
-
+	map_credits = {
+        made = "vissa",
+    },
 })
 
 TheEncounter.Step({

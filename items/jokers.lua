@@ -29,6 +29,9 @@ SMODS.Joker{
     eternal_compat = true,
     unlocked = true,
     discovered = true,
+    map_credits = {
+        made = "vissa",
+    },
 
     calculate = function(self, card, context)
         if context.new_map then
@@ -67,6 +70,9 @@ SMODS.Joker{
     eternal_compat = true,
     unlocked = true,
     discovered = true,
+    map_credits = {
+        made = "vissa",
+    },
 
     calculate = function(self, card, context)
         if context.new_map then
@@ -106,6 +112,9 @@ SMODS.Joker{
     eternal_compat = true,
     unlocked = true,
     discovered = true,
+    map_credits = {
+        made = "vissa",
+    },
 
     calculate = function(self, card, context)
         if context.blueprint then
@@ -140,6 +149,9 @@ SMODS.Joker{
     eternal_compat = true,
     unlocked = true,
     discovered = true,
+    map_credits = {
+        made = "vissa",
+    },
 
     calculate = function(self, card, context)
         if context.enc_scenario_start and not context.blueprint then
@@ -174,6 +186,9 @@ SMODS.Joker{
     eternal_compat = true,
     unlocked = true,
     discovered = true,
+    map_credits = {
+        made = "vissa",
+    },
 
     calculate = function(self, card, context)
         if context.blueprint then

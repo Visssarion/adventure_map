@@ -873,6 +873,10 @@ TheEncounter.Scenario({
 
 	colour = HEX("D60000"),
 	background_colour = HEX("A50000"),
+
+	map_credits = {
+		code = { "N'" }
+	}
 })
 TheEncounter.Step({
 	key = "tavern_start",

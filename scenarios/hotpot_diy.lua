@@ -1,5 +1,9 @@
 -- Defining scenario aka event inself
 TheEncounter.Scenario({
+	map_credits = {
+		code = { "SleepyG11" },
+	},
+	
 	-- Required fields
 	key = "buzzfeed_quiz",
 	starting_step_key = "st_map_buzzfeed_quiz_start",

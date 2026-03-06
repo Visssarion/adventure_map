@@ -95,6 +95,12 @@ return {
         v_dictionary={
             punch_card_more="#1# more required.",
             punch_card_will="Next consumable will be duplicated!",
+            
+            map_art = { "Art: #1#" },
+            map_code = { "Code: #1#" },
+            map_idea = { "Idea: #1#" },
+            map_made = { "Made: #1#" },
+            map_help = { "Help: #1#"}
         }
     }
 }

@@ -1,10 +1,8 @@
-adventure_map = {}
-
 local mod_path = "" .. SMODS.current_mod.path
-adventure_map.path = mod_path
-adventure_map_config = SMODS.current_mod.config
 
 assert(SMODS.load_file("globals.lua"))()
+
+MAP.mod = SMODS.current_mod
 
 -- Adding a new state
 G.STATES.ADVENTURE_MAP = 2081

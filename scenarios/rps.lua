@@ -16,6 +16,9 @@ TheEncounter.Scenario({
 	},
 	starting_step_key = "st_map_rps_start",
     weight = 5,
+	map_credits = {
+        made = "vissa",
+    },
 })
 
 TheEncounter.Step({
