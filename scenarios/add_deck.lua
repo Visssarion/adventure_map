@@ -13,7 +13,10 @@ TheEncounter.Scenario({
 		hide_image = true,
 	},
 	starting_step_key = "st_map_add_deck_add",
-	weight = 1
+	weight = 1,
+	map_credits = {
+        made = "vissa",
+    },
 })
 
 -- might want to move this somewhere else and remove local and i need it again
