@@ -131,7 +131,7 @@ MAP.MapManager = {
         return map
     end,
 
-    ---comment
+    ---returns domain for the scenario
     ---@param scenario TheEncounter.Scenario
     ---@return string
     find_domain = function (scenario)

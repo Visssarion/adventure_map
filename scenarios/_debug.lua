@@ -98,20 +98,3 @@
 -- })
 
 
--- TheEncounter.Scenario({
--- 	key = "mystery_debug",
--- 	loc_txt = {
--- 		name = "Mystery Debug",
--- 		text = {
--- 			"Description",
--- 		},
--- 	},
--- 	domains = {
--- 		do_map_mystery = true,
--- 	},
--- 	config = {
--- 		hide_image = true,
--- 	},
--- 	starting_step_key = "st_map_empty",
--- })
-
