@@ -1,6 +1,3 @@
-
-
-
 MAP.UI.render_map = function ()
     if MAP.UI._map then
         MAP.UI._map:remove()

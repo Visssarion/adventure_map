@@ -7,63 +7,55 @@ MAP.mod = SMODS.current_mod
 -- Adding a new state
 G.STATES.ADVENTURE_MAP = 2081
 
---Load base classes files
-local files = NFS.getDirectoryItems(mod_path .. "base")
-for _, file in ipairs(files) do
-	print("[ADVENTURE_MAP] Loading lua file " .. file)
-	local f, err = SMODS.load_file("base/" .. file)
-	if err then
-		error(err) 
-	end
-	f()
+local function is_lua_path(path)
+    return string.sub(path, -4) == ".lua"
 end
 
 
---Load item files
-local files = NFS.getDirectoryItems(mod_path .. "items")
-for _, file in ipairs(files) do
-	print("[ADVENTURE_MAP] Loading lua file " .. file)
-	local f, err = SMODS.load_file("items/" .. file)
-	if err then
-		error(err) 
+local function folder_load(mod_path, folder) 
+	local files = NFS.getDirectoryItems(mod_path .. folder)
+	for _, file in ipairs(files) do
+		if is_lua_path(file) then
+			print("[ADVENTURE_MAP] Loading lua file " .. file)
+			local f, err = SMODS.load_file(folder.."/" .. file)
+			if err then
+				error(err) 
+			end
+			f()
+		end
 	end
-	f()
 end
 
---Load ui files
-local files = NFS.getDirectoryItems(mod_path .. "ui")
-for _, file in ipairs(files) do
-	print("[ADVENTURE_MAP] Loading lua file " .. file)
-	local f, err = SMODS.load_file("ui/" .. file)
-	if err then
-		error(err) 
+local function recursive_load(mod_path, folder, fileTree)
+	local filesTable = SMODS.NFS.getDirectoryItems(mod_path..folder)
+	for i,v in ipairs(filesTable) do
+		local file = folder.."/"..v
+		local info = SMODS.NFS.getInfo(mod_path..file)
+		if info then
+			print(info)
+			if info.type == "file" and is_lua_path(file) then
+				local f, err = SMODS.load_file(file)
+				if err then
+					error(err) 
+				end
+				f()
+				fileTree = fileTree.."\n"..file
+			elseif info.type == "directory" and SMODS.NFS.getInfo(mod_path..file.."/.loadignore") == nil then
+				--fileTree = fileTree.."\n"..file.." (DIR)"
+				fileTree = recursive_load(mod_path, file, fileTree)
+			end
+		end
 	end
-	f()
+	return fileTree
 end
 
---Load state files
-local files = NFS.getDirectoryItems(mod_path .. "state")
-for _, file in ipairs(files) do
-	print("[ADVENTURE_MAP] Loading lua file " .. file)
-	local f, err = SMODS.load_file("state/" .. file)
-	if err then
-		error(err) 
-	end
-	f()
-end
 
+folder_load(mod_path, "base")
+folder_load(mod_path, "items")
+folder_load(mod_path, "ui")
+folder_load(mod_path, "state")
 
---Load state files
-local files = NFS.getDirectoryItems(mod_path .. "scenarios")
-for _, file in ipairs(files) do
-	print("[ADVENTURE_MAP] Loading lua file " .. file)
-	local f, err = SMODS.load_file("scenarios/" .. file)
-	if err then
-		error(err) 
-	end
-	f()
-end
-
+print(recursive_load(mod_path, 'scenarios', "[ADVENTURE_MAP] Loading LUA:"))
 
 print("[ADVENTURE_MAP] Stopped Loading")
 
