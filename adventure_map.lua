@@ -32,7 +32,6 @@ local function recursive_load(mod_path, folder, fileTree)
 		local file = folder.."/"..v
 		local info = SMODS.NFS.getInfo(mod_path..file)
 		if info then
-			print(info)
 			if info.type == "file" and is_lua_path(file) then
 				local f, err = SMODS.load_file(file)
 				if err then
