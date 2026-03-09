@@ -49,11 +49,25 @@ return {
                     "{C:inactive}#2#",
                 },
             },
+            j_throwback = {
+                text = {
+                    "{X:mult,C:white} X#1# {} Mult for each",
+                    "{C:attention}Tag{} activated this run",
+                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+                },
+            }
         },
         Tag = {
             tag_map_bigger_map = {
                 name = "Bigger Map Tag",
                 text = {"Adds #1# more steps to your map"}
+            },
+            tag_skip = {
+                text = {
+                    "Gives {C:money}$#1#{} per activated",
+                    "Tag this run",
+                    "{C:inactive}(Will give {C:money}$#2#{C:inactive})",
+                },
             }
         },
         enc_Step = {

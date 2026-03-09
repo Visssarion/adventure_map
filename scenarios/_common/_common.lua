@@ -1,3 +1,13 @@
+MAP.UTIL.immediate_tag_trigger = function ()
+    for index, tag in ipairs(G.GAME.tags) do
+        tag:apply_to_run({type = 'immediate'})
+    end
+    for index, tag in ipairs(G.GAME.tags) do
+        tag:apply_to_run({type = 'new_blind_choice'})
+    end
+end
+
+
 TheEncounter.Choice({
 	key = "take_joker",
 	loc_txt = {

@@ -32,7 +32,7 @@ TheEncounter.Step({
 				{
 					n = G.UIT.T,
 					config = {
-						text = "Imagine wallet from HotPot here ok?",
+						text = "In biz we call it 'dropshipping'.",
 						scale = 0.35,
 						colour = G.C.MULT,
 					},
@@ -43,7 +43,7 @@ TheEncounter.Step({
 
 	start = function(self, event)
 		local chara = event:image_character({
-			center = "j_flash",
+			center = "j_certificate",
 			dy = -0.75,
 			key = "shopkeeper",
 			scale = 0.75,

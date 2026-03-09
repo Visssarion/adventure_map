@@ -2,6 +2,5 @@
 
 MAP = {
     UI = {},
-    UTIL = {}
+    UTIL = {},
 }
-

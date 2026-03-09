@@ -237,3 +237,25 @@ SMODS.Joker{
 -- 
 
 
+SMODS.Joker:take_ownership('j_throwback', -- object key (class prefix not required)
+    { 
+    map_credits = {
+        made = "vissa",
+    },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra, 1 + (G.GAME.tags_used or 0) * card.ability.extra } }
+    end,
+	calculate = function(self, card, context)
+        if context.skip_blind and not context.blueprint then
+            return {
+                message = localize { type = 'variable', key = 'a_xmult', vars = { 1 + (G.GAME.tags_used or 0) * card.ability.extra } }
+            }
+        end
+        if context.joker_main then
+            return {
+                xmult = 1 + (G.GAME.tags_used or 0) * card.ability.extra
+            }
+        end
+    end,
+    }
+)

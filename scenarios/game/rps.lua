@@ -67,7 +67,7 @@ TheEncounter.Choice({
 		event:start_step("st_map_rps_select")
 	end,
 	func = function (self, event, ability)
-		return G.GAME.dollars > ability.extra.cost
+		return G.GAME.dollars >= ability.extra.cost
 		
 	end
 })
@@ -145,6 +145,19 @@ TheEncounter.Step({
 		event.ability.extra.state = self.config.win_table[event.ability.extra.choice][event.ability.extra.enemy_choice]
 		if event.ability.extra.state == "win" then
 			event.ability.extra.tag = pseudorandom_element(SMODS.get_clean_pool("Tag"), 'map_rps_tag')
+			local temp_tag = Tag(event.ability.extra.tag)
+			local tag_sprite_ui = temp_tag:generate_UI()
+
+			event.ui.image.children.tag = UIBox{
+				definition = {n=G.UIT.ROOT, config={align = "cm",padding = 0.05, colour = G.C.CLEAR}, nodes={
+					tag_sprite_ui
+				}},
+				config = {
+					align = 'bm',
+					-- offset = G.HUD_tags[1] and {x=0,y=0} or {x=0.7,y=0},
+					major = event.ui.image
+				}
+			}
 		end
 	end,
 	loc_vars = function(self, info_queue, event)

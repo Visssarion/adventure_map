@@ -69,6 +69,9 @@ SMODS.current_mod.calculate = function(self, context)
 			MAP.MapManager.generate_new_map()
 		end
 	end
+	if context.tag_triggered then
+		G.GAME.tags_used = G.GAME.tags_used + 1
+	end
 end
 
 SMODS.current_mod.reset_game_globals = function(run_start)
@@ -80,5 +83,8 @@ SMODS.current_mod.reset_game_globals = function(run_start)
 		MAP.MapManager.generate_new_map()
 
 		G.GAME.events_visited_total = 0
+		G.GAME.tags_used = 0
+
 	end
 end
+

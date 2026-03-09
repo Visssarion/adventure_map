@@ -151,7 +151,7 @@ TheEncounter.Step({
 		text = {
 			"I WILL BESTOW POWERS UPON YOU.",
 			"POWERS THAT YOU DONT HAVE, BUT #1# HAS.",
-			"SHALL YOU PROCEED?"
+			"{s:1.5}SHALL YOU PROCEED?",
 		},
 		choices = {
 			call = {
@@ -181,20 +181,13 @@ TheEncounter.Step({
 			{
 				choice = "call",
 				button = function()
-					--print(event.ability.extra.deck)
-					-- G.GAME.selected_back_key = event.ability.extra.deck_key
-					-- G.GAME.selected_back = event.ability.extra.deck
-					-- print("PLEAAASE")
-					-- print(G.GAME.starting_params.hands)
-
 					apply_during_the_run(event.ability.extra.deck)
-					-- print(G.GAME.starting_params.hands)
 					event:finish_scenario()
 				end,
 				loc_vars = function(self, info_queue, event)
 					return {
 						vars = {
-							localize({type = "name_text", key = event.ability.extra.deck_key, set = "Back"}), -- TODO change to localize
+							localize({type = "name_text", key = event.ability.extra.deck_key, set = "Back"}),
 						},
 					}
 				end,
@@ -203,11 +196,21 @@ TheEncounter.Step({
 		}
 	end,
 	loc_vars = function(self, info_queue, event)
+
 		return {
 			vars = {
-				localize({type = "name_text", key = event.ability.extra.deck_key, set = "Back"}), -- TODO change to localize
+				localize({type = "name_text", key = event.ability.extra.deck_key, set = "Back"}), 
+				
 			},
 		}
+
+		-- local description = localize({type = "raw_descriptions", key = event.ability.extra.deck_key, set = "Back",
+		-- 		vars = event.ability.extra.deck.loc_vars(G.P_CENTERS[event.ability.extra.deck_key], {}, event.ability.extra.deck)})
+		-- for i = 1, 4, 1 do
+		-- 	if description[i] == nil then
+		-- 		description[i] = ""
+		-- 	end
+		-- end
 	end,
 })
 
