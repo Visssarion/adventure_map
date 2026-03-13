@@ -29,11 +29,11 @@ function SMODS.create_mod_badges(obj, badges)
 			local scale_fac = calced_text_width > max_text_width and max_text_width / calced_text_width or 1
 			return scale_fac
 		end
-		if obj.map_credits.art or obj.map_credits.code or obj.map_credits.idea or obj.map_credits.made or obj.map_credits.help or obj.map_credits.custom then
+		if obj.map_credits.art or obj.map_credits.code or obj.map_credits.idea or obj.map_credits.made or obj.map_credits.help or obj.map_credits.rewrite or obj.map_credits.custom then
 			local scale_fac = {}
 			local min_scale_fac = 1
 			local strings = { MAP.mod.display_name }
-			for _, v in ipairs({ "idea", "art", "code", "made", "help" }) do
+			for _, v in ipairs({ "idea", "art", "code", "made", "help", "rewrite" }) do
 				if obj.map_credits[v] then
 					if type(obj.map_credits[v]) == "string" then obj.map_credits[v] = { obj.map_credits[v] } end
 					for i = 1, #obj.map_credits[v] do

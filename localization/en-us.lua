@@ -114,7 +114,8 @@ return {
             map_code = { "Code: #1#" },
             map_idea = { "Idea: #1#" },
             map_made = { "Made: #1#" },
-            map_help = { "Help: #1#"}
+            map_help = { "Help: #1#"},
+            map_rewrite = { "Rewrite: #1#"}
         }
     }
 }

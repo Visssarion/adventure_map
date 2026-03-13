@@ -875,7 +875,8 @@ TheEncounter.Scenario({
 	background_colour = HEX("A50000"),
 
 	map_credits = {
-		code = { "N'" }
+		code = { "N'" },
+		rewrite={"SleepyG11"}
 	}
 })
 TheEncounter.Step({

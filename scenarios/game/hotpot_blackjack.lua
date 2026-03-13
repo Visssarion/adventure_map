@@ -71,7 +71,8 @@ TheEncounter.Scenario({
 	end,
 
 	map_credits = {
-		code = { "fey <3" }
+		code = { "fey <3" },
+		rewrite={"SleepyG11"}
 	}
 })
 

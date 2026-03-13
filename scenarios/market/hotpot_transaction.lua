@@ -17,6 +17,7 @@ TheEncounter.Scenario({
 
 	map_credits = {
 		code = { "N'" },
+		rewrite={"SleepyG11"}
 	},
 })
 TheEncounter.Step({
