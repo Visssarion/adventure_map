@@ -103,27 +103,62 @@ TheEncounter.Step({
 				choice = "rock",
 				button = function()
 					event.ability.extra.choice = "rock"
-					event:start_step("st_map_rps_play")
+					event:start_step("st_map_rps_info")
 				end,
 			},
 			{
 				choice = "paper",
 				button = function()
 					event.ability.extra.choice = "paper"
-					event:start_step("st_map_rps_play")
+					event:start_step("st_map_rps_info")
 				end,
 			},
 			{
 				choice = "scissors",
 				button = function()
 					event.ability.extra.choice = "scissors"
-					event:start_step("st_map_rps_play")
+					event:start_step("st_map_rps_info")
 				end,
 			},
 		}
 	end,
 
 })
+
+TheEncounter.Step({
+	key = "rps_info",
+	loc_txt = {
+		text = {
+			"You picked: #1#.",
+			"Enemy picked: #2#."
+		},
+		choices = {
+			call = {
+				name = { "Continue" },
+			},
+
+		},
+	},
+	get_choices = function(self, event)
+		return {
+			{
+				choice = "call",
+				button = function()
+					event:start_step("st_map_rps_play")
+				end,
+			},
+		}
+	end,
+	loc_vars = function (self, info_queue, event)
+		return {
+			vars = {
+				localize('rps_'..event.ability.extra.choice),
+				localize('rps_'..event.ability.extra.enemy_choice),
+			}
+		}
+	end
+})
+
 
 TheEncounter.Step({
 	key = "rps_play",
@@ -217,6 +252,7 @@ TheEncounter.Step({
 					button = function()
 						
 						add_tag(Tag(event.ability.extra.tag))
+						MAP.UTIL.immediate_tag_trigger()
 						event:finish_scenario()
 					end,
 					loc_vars = function(self, info_queue, event)
@@ -239,4 +275,3 @@ TheEncounter.Step({
 
 	
 })
-

@@ -73,6 +73,12 @@ TheEncounter.Step({
     start = function(self, event)
         MAP.UTIL.card_show_area(event)
         MAP.UTIL.add_card_to_event_area(event, event.ability.extra.planet_key)
+
+        event:image_character({
+			key = "joker",
+			center = "j_constellation",
+			scale = 1,
+		})
     end,
     finish = function (self, event)
         MAP.UTIL.remove_card_show_area(event)

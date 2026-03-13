@@ -48,8 +48,8 @@ MAP.MapManager = {
         -- passed into calculate_context. used for generating the map
         local config = {
             room_weights = {
-                event = 1.0,
-                shop = 0.2,
+                event = 0.9,
+                shop = 0.25,
                 small_blind = 0.07,
                 big_blind = 0.07,
             },

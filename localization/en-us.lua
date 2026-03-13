@@ -91,8 +91,6 @@ return {
         }
     },
     misc = {
-
-
         dictionary = {
 
             k_more_shops="More Shops!",
@@ -102,9 +100,11 @@ return {
             k_bigger_map="Bigger Map",
             k_punch_duplicate="Consumable printed",
 
-            
-
             b_debug_button="DEBUG BUTTON",
+
+            rps_rock="Rock",
+            rps_paper="Paper",
+            rps_scissors="Scissors"
         },
         v_dictionary={
             punch_card_more="#1# more required.",
