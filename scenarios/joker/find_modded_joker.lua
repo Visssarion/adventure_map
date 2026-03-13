@@ -95,7 +95,7 @@ TheEncounter.Step({
 	background_colour = function(self, event)
 		-- custom vortex
 		ease_background_colour({
-			new_colour = darken(HEX("DE2041"), 0.2),
+			new_colour = darken(G.C.BLUE, 0.2),
 			special_colour = G.C.BLACK,
 			contrast = 5,
 		})

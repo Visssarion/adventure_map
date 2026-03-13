@@ -17,6 +17,7 @@ TheEncounter.Scenario({
 	map_credits = {
         made = "vissa",
     },
+	rarity = 3
 })
 
 -- might want to move this somewhere else and remove local and i need it again

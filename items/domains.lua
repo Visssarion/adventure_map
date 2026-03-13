@@ -89,6 +89,7 @@ TheEncounter.Domain({
 
     atlas = MAP.UI.ICONS.atlas,
     pos = MAP.UI.ICONS.pos.gift,
+	rarity = 2
 })
 
 -- -- do_map_coin
@@ -138,7 +139,7 @@ TheEncounter.Domain({
 	},
 	can_repeat = true,
 	reward = 0,
-	colour = G.C.WHITE,
+	colour = MAP.UI.C.DARKER_WHITE,
 	background_colour = G.C.BLACK,
 
     atlas = MAP.UI.ICONS.atlas,
@@ -175,7 +176,7 @@ TheEncounter.Domain({
 	},
 	can_repeat = true,
 	reward = 0,
-	colour = G.C.WHITE,
+	colour = MAP.UI.C.DARKER_WHITE,
 	background_colour = G.C.BLACK,
 
     atlas = MAP.UI.ICONS.atlas,
@@ -218,5 +219,6 @@ TheEncounter.Domain({
 
     atlas = MAP.UI.ICONS.atlas,
     pos = MAP.UI.ICONS.pos.hieroglyph,
+	rarity = 3
 })
 

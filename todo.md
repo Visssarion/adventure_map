@@ -1,3 +1,8 @@
+- nerf tavern
+- separate tavern into 2 events
+
+- change Scenario.weight to Scenario.default_weight
+
 - add a reroll boss button?
 - cooler way to see boss description?
 
