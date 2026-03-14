@@ -113,7 +113,8 @@ SMODS.Joker{
     unlocked = true,
     discovered = true,
     map_credits = {
-        made = "vissa",
+        code = "vissa",
+        art = "chez"
     },
 
     calculate = function(self, card, context)
@@ -150,7 +151,8 @@ SMODS.Joker{
     unlocked = true,
     discovered = true,
     map_credits = {
-        made = "vissa",
+        code = "vissa",
+        art = {"chez", "vissa"}
     },
 
     calculate = function(self, card, context)
@@ -187,7 +189,8 @@ SMODS.Joker{
     unlocked = true,
     discovered = true,
     map_credits = {
-        made = "vissa",
+        code = "vissa",
+        art = {"chez", "vissa"}
     },
 
     calculate = function(self, card, context)
