@@ -28,5 +28,7 @@ event ideas:
 - wooing some fancy clown (you can try to date him, and you will get different jokers based on choice)
 - increase stats of the joker https://github.com/Steamodded/smods/wiki/Calculate-Functions#scaling-values
 - ban a consumeable from appearing ( G.GAME.banned_keys[key] = true )
+- enemy event that sends you into shop afterwards
+- pay to enter shop
 
 card destroy?

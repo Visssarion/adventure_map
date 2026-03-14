@@ -106,7 +106,7 @@ SMODS.Joker{
     config = { extra = { extra_steps = 2 } },
     atlas = 'map_jokers',
     pos = { x = 2, y = 0 },
-    rarity = 2,
+    rarity = 3,
     cost = 7,
     blueprint_compat = false,
     eternal_compat = true,

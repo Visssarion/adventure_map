@@ -131,7 +131,8 @@ TheEncounter.Step({
 		chara:add_speech_bubble(quip, nil, { quip = true })
 		chara:say_stuff(5, false, quip)
 
-        MAP.UTIL.card_show_area(event, event.ability.extra.joker_key)
+        MAP.UTIL.card_show_area(event)
+		MAP.UTIL.add_card_to_event_area(event, event.ability.extra.joker_key)
     end,
     finish = function (self, event)
 		
