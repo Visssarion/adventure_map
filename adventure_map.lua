@@ -87,3 +87,9 @@ SMODS.current_mod.reset_game_globals = function(run_start)
 	end
 end
 
+SMODS.Atlas{
+	key = "modicon",
+	path = "icon.png",
+	px=34,
+	py=34
+}
