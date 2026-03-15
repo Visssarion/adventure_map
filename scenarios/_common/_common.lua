@@ -186,3 +186,48 @@ MAP.UTIL.remove_card_show_area = function (event)
     end)
 
 end
+
+
+
+local default_seals_to_keys = {
+	Blue = "blue_seal",
+	Red = "red_seal",
+	Gold = "gold_seal",
+	Purple = "purple_seal"
+}
+
+--- comment
+--- @param seal_key Seals|string?
+--- @param price number
+--- @return TheEncounter.ChoiceItem
+MAP.UTIL.create_seal_sell_choice = function (seal_key, price)
+	local localization_key = default_seals_to_keys[seal_key] or seal_key.."_seal"
+	return {
+			choice = "buy",
+			button = function()
+				ease_dollars(-price)
+				local viable_cards = {}
+				for k, v in pairs(G.playing_cards) do
+					if v:get_seal(true) == nil then
+						viable_cards[#viable_cards+1] = v
+					end
+                end
+				---@type balatro.Card
+				local card = next(viable_cards) and pseudorandom_element(viable_cards, "map_buy_seal_random_card") or pseudorandom_element(G.playing_cards, "map_buy_seal_random_card")
+				card:set_seal(seal_key)
+			end,
+			loc_vars = function(self, info_queue, event)
+				return {
+					vars = {
+						localize({type = "name_text", key = localization_key, set = "Other"}),
+						--"PLACEHOLDER",
+						price
+					},
+				}
+			end,
+			func = function (self, event, ability)
+				return G.GAME.dollars >= price
+				
+			end,
+		}
+end
