@@ -8,6 +8,11 @@ function print_event_queue(queue)
 end
 
 
+-- Increase scaling because mod makes game easier
+MAP.UTIL.additional_blind_chips = function ()
+    return 0.2 * get_blind_amount(G.GAME.round_resets.ante)
+end
+
 
 -- CREDITS SYSTEM
 --#region Card Credits System

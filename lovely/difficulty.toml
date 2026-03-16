@@ -1,0 +1,13 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+
+[[patches]]
+[patches.pattern]
+target = "blind.lua"
+pattern = "self.chip_text = number_format(self.chips)"
+position = "before"
+payload = "self.chips = self.chips + MAP.UTIL.additional_blind_chips() * G.GAME.starting_params.ante_scaling"
+match_indent = true

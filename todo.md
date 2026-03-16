@@ -30,5 +30,6 @@ event ideas:
 - ban a consumeable from appearing ( G.GAME.banned_keys[key] = true )
 - enemy event that sends you into shop afterwards
 - pay to enter shop
+- remove stickers from a joker?
 
 card destroy?
