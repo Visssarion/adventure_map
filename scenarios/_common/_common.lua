@@ -176,12 +176,13 @@ MAP.UTIL.add_card_to_event_area = function (event, card_key)
 end
 
 MAP.UTIL.remove_card_show_area = function (event)
-    -- To make it look smooth, we need remove this elements when it's out of screen boundaries, aka when event is finished
     event:before_remove_callback(function ()
-        -- G.SHOP_SIGN:remove()
-        -- G.SHOP_SIGN = nil
-        G.event_cards.children.area_uibox:remove()
-        G.event_cards:remove()
+        if G.event_cards then
+            if G.event_cards.children.area_uibox then
+                G.event_cards.children.area_uibox:remove()
+            end
+            G.event_cards:remove()
+        end
         G.event_cards = nil
     end)
 
