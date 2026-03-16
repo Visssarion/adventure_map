@@ -93,3 +93,13 @@ SMODS.Atlas{
 	px=34,
 	py=34
 }
+
+
+local main_menu_jokers = {"j_map_travel_guide", "j_map_gps"}
+-- Adds Cavendish to the title screen
+SMODS.current_mod.menu_cards = function()
+    return { -- This takes any SMODS.create_card parameters
+        key = main_menu_jokers[math.random(#main_menu_jokers)],
+        remove_original = true -- This removes the vanilla Ace
+    }
+end
