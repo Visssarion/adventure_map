@@ -27,10 +27,10 @@ local function folder_load(mod_path, folder)
 end
 
 local function recursive_load(mod_path, folder, fileTree)
-	local filesTable = SMODS.NFS.getDirectoryItems(mod_path..folder)
+	local filesTable = NFS.getDirectoryItems(mod_path..folder)
 	for i,v in ipairs(filesTable) do
 		local file = folder.."/"..v
-		local info = SMODS.NFS.getInfo(mod_path..file)
+		local info = NFS.getInfo(mod_path..file)
 		if info then
 			if info.type == "file" and is_lua_path(file) then
 				local f, err = SMODS.load_file(file)
@@ -39,7 +39,7 @@ local function recursive_load(mod_path, folder, fileTree)
 				end
 				f()
 				fileTree = fileTree.."\n"..file
-			elseif info.type == "directory" and SMODS.NFS.getInfo(mod_path..file.."/.loadignore") == nil then
+			elseif info.type == "directory" and NFS.getInfo(mod_path..file.."/.loadignore") == nil then
 				--fileTree = fileTree.."\n"..file.." (DIR)"
 				fileTree = recursive_load(mod_path, file, fileTree)
 			end
